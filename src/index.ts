@@ -1,3 +1,4 @@
+import "reflect-metadata"
 import express, { Application } from "express";
 import { ErrorHandlerMiddleware } from "./middlewares";
 import router from "./routes";
@@ -20,7 +21,6 @@ app.use("/*", ErrorHandlerMiddleware.errorHandlerMiddleware)
 const port = process.env.PORT || 5000
 app.listen(port, () => {
     console.log(`Server run on port: ${port}`)
-
 })
 
 

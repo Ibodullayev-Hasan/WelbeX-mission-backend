@@ -1,6 +1,13 @@
 node_modules/
+
+# env file
 .env
-.dist
+
+# production dist
+dist/
 
 # 
-.vscode
+.vscode/
+
+# 
+.txt
