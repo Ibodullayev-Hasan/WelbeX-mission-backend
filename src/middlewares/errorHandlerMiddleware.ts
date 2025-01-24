@@ -1,4 +1,4 @@
-import { ErrorHandler } from "errors";
+import { ErrorHandler } from "../errors";
 import { NextFunction, Request, Response } from "express";
 
 export class ErrorHandlerMiddleware {

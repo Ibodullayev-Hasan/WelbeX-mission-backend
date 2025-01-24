@@ -4,21 +4,7 @@
         "module": "commonjs",
         "rootDir": "./src",
         "outDir": "./dist",
-        "baseUrl": "./src/",
-        "paths": {
-            "@interfaces": [
-                "./src/interfaces"
-            ],
-            "@controllers": [
-                "./src/controllers/"
-            ],
-            "@models": [
-                "./src/models/"
-            ],
-            "@errors": [
-                "./src/errors/index.ts"
-            ]
-        },
+        "baseUrl": "./",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
