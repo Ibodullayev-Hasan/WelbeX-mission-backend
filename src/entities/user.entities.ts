@@ -7,10 +7,10 @@ export class User implements IUser {
 	@PrimaryGeneratedColumn("uuid")
 	id!: string
 
-	@Column({ type: "text" })
+	@Column({ type: "text", nullable: false })
 	username!: string;
 
-	@Column({ type: "varchar" })
+	@Column({ type: "varchar", nullable: false })
 	password!: string;
 
 	@OneToMany(() => Blog, (blog) => blog.author)

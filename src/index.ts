@@ -4,7 +4,7 @@ import router from "./routes";
 import "dotenv/config"
 import "reflect-metadata"
 import cors from "cors"
-import { AppDataSource } from "./config/typeorm.config";
+import { appDataSource } from "./config/typeorm.config";
 const app: Application = express()
 
 
@@ -16,9 +16,10 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
-AppDataSource.initialize()
-    .then(() => { console.log('Success') })
+appDataSource.initialize()
+    .then(() => { console.log('Db connected successfully') })
     .catch((err) => { console.log(`Typeorm:${err}`) })
+
 
 app.use(router)
 
