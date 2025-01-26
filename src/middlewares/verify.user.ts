@@ -31,7 +31,7 @@ export const verifyUser = async (req: Request, res: Response, next: NextFunction
 		})
 
 		if (!user) {
-			return res.status(404).send({
+			return res.status(401).send({
 				message: "User not found"
 			})
 		}
