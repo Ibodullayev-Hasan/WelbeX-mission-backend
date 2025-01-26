@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { Login } from "src/auth/login";
-import { UseerController } from "src/controllers";
-import { verifyUser } from "src/middlewares/verify.user";
+import { Login } from "../auth/login";
+import { UseerController } from "../controllers";
+import { verifyUser } from "../middlewares";
 
 const userRouter: Router = Router()
 

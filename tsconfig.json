@@ -4,7 +4,7 @@
         "module": "commonjs",
         "rootDir": "./src",
         "outDir": "./dist",
-        "baseUrl": "./",
+        "baseUrl": "./", 
         "typeRoots": [
             "src/types",
             "./node_modules/@types"
@@ -20,14 +20,13 @@
         "experimentalDecorators": true
     },
     "include": [
-        "src/**/*",
-        "src/types"
+        "src/**/*"
     ],
     "files": [
         "src/types/express.d.ts"
     ],
     "exclude": [
-        "./dist",
-        "node_modules/"
+        "node_modules",
+        "dist"
     ]
 }

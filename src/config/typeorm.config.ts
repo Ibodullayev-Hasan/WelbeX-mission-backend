@@ -1,6 +1,6 @@
-import { Blog, User } from "src/entities";
 import { DataSource } from "typeorm";
 import "dotenv/config"
+import { Blog, User } from "../entities";
 
 export const appDataSource = new DataSource({
 	type: "postgres",

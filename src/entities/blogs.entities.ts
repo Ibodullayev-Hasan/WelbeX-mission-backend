@@ -1,4 +1,4 @@
-import { IBlog, IContent } from "src/interfaces";
+import { IBlog, IContent } from "../interfaces";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entities";
 

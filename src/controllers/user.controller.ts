@@ -1,11 +1,11 @@
 import { appDataSource } from './../config/typeorm.config';
-import { ErrorHandler } from "src/errors"
-import { User } from 'src/entities';
 import { NextFunction, Request, Response } from 'express';
-import { IUser } from 'src/interfaces';
-import { validateUserData } from 'src/validation';
 import jwt from "jsonwebtoken"
 import "dotenv/config"
+import { IUser } from '../interfaces';
+import { validateUserData } from '../validation';
+import { User } from '../entities';
+import { ErrorHandler } from '../errors';
 
 
 // User controller

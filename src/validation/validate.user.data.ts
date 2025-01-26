@@ -1,4 +1,4 @@
-import { IUser } from "src/interfaces";
+import { IUser } from "../interfaces";
 
 export function validateUserData(userData: Partial<IUser>): string | null {
 	if (!userData || Object.keys(userData).length < 1) {

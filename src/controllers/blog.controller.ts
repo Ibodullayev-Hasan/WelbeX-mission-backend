@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import { ErrorHandler } from "src/errors";
-import { appDataSource } from "src/config/typeorm.config";
-import { Blog, User } from "src/entities";
-import { IBlog } from "src/interfaces";
-import { validateBlogData } from "src/validation";
+import { Blog, User } from '../entities';
+import { ErrorHandler } from '../errors';
 import "dotenv/config";
+import { appDataSource } from "../config/typeorm.config";
+import { IBlog } from "../interfaces";
+import { validateBlogData } from "../validation";
 
 export class BlogController {
 

@@ -1,0 +1,265 @@
+openapi: 3.0.0
+info:
+  title: Welbex API documentation
+  version: 1.0.0
+tags:
+- name: User
+  description: Operations related to users
+- name: Blog
+  description: Operations related to blogs
+paths:
+  /user/new:
+    post:
+      tags:
+      - User
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                login:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Invalid input
+        '409':
+          description: User already exists
+
+  /user/profile:
+    get:
+      tags:
+      - User
+      summary: Get user profile
+      responses:
+        '200':
+          description: User profile retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  username:
+                    type: string
+                  login:
+                    type: string
+                  blogs:
+                    type: array
+                    items:
+                      type: object
+
+  /user/login:
+    post:
+      summary: User Login
+      description: Allows a user to log in with their credentials and receive access and refresh tokens.
+      operationId: userLogin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                login:
+                  type: string
+                  description: The user's login (username or email)
+                  example: user123
+                password:
+                  type: string
+                  description: The user's password
+                  example: password123
+              required:
+              - login
+              - password
+      responses:
+        '201':
+          description: Successful login, returns access and refresh tokens
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  acc_token:
+                    type: string
+                    description: Access token for authentication
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  ref_token:
+                    type: string
+                    description: Refresh token to obtain a new access token
+                    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+        '400':
+          description: Bad request (missing login or password)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "login and password required"
+        '401':
+          description: Unauthorized (invalid credentials)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid credentials"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "An unexpected error occurred"
+
+  /blog:
+    get:
+      tags:
+      - Blog
+      summary: Get all blogs of the author
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: List of blogs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    content:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                        content:
+                          type: string
+                    author:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        username:
+                          type: string
+                    date:
+                      type: string
+                      format: date-time
+
+  /blog/new:
+    post:
+      tags:
+      - Blog
+      summary: Create a new blog
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - text
+                      - image
+                      - video
+                    content:
+                      type: string
+      responses:
+        '201':
+          description: Blog successfully created
+        '400':
+          description: Invalid input
+
+  /blog/update:
+    patch:
+      tags:
+      - Blog
+      summary: Update a blog
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                content:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - text
+                      - image
+                      - video
+                    content:
+                      type: string
+      responses:
+        '200':
+          description: Blog updated successfully
+        '400':
+          description: Invalid input
+        '403':
+          description: Unauthorized
+        '404':
+          description: Blog not found
+
+  /blog/delete:
+    delete:
+      tags:
+      - Blog
+      summary: Delete a blog
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+      responses:
+        '200':
+          description: Blog deleted successfully
+        '400':
+          description: ID required
+        '404':
+          description: Blog not found
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

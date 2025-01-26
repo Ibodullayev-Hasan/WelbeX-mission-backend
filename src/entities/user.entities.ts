@@ -1,4 +1,4 @@
-import { IUser } from "src/interfaces";
+import { IUser } from "../interfaces";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Blog } from "./blogs.entities";
 

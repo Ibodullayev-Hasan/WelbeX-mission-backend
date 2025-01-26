@@ -1,10 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import { ErrorHandler } from "src/errors";
 import jwt from "jsonwebtoken"
 import "dotenv/config"
-import { IUser } from "src/interfaces";
-import { appDataSource } from "src/config/typeorm.config";
-import { User } from "src/entities";
+import { IUser } from "../interfaces";
+import { appDataSource } from "../config/typeorm.config";
+import { User } from "../entities";
+import { ErrorHandler } from "../errors";
 
 
 // user verification

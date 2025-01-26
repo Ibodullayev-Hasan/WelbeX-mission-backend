@@ -6,8 +6,3 @@ node_modules/
 # production dist
 dist/
 
-# 
-.vscode/
-
-# 
-.txt

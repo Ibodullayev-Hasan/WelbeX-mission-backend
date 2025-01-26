@@ -1,4 +1,4 @@
-import { Blog } from "src/entities"
+import { Blog } from "../entities"
 
 export interface IUser {
 	id?: string

@@ -1,4 +1,4 @@
-import { IBlog } from "src/interfaces";
+import { IBlog } from "../interfaces";
 
 export function validateBlogData(blogData: IBlog): string | null {
     if (!blogData.content || !blogData.content.type || !blogData.content.content) {
