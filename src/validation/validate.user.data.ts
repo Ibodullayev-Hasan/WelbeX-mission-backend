@@ -30,4 +30,4 @@ export function validateUserData(userData: Partial<IUser>): string | null {
 		return 'Username must be at least 3 characters long and can contain letters, numbers, and dots';
 	}
 	return null;
-}
+};

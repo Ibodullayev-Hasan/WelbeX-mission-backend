@@ -29,7 +29,6 @@ const swaggerFilePath = path.resolve(__dirname, "../swagger.yaml")
 const swaggerDocument = YAML.parse(fs.readFileSync(swaggerFilePath, "utf-8"))
 app.use("/welbex/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-
 app.use("/*", ErrorHandlerMiddleware.errorHandlerMiddleware)
 const port = process.env.PORT || 5000
 app.listen(port, () => {

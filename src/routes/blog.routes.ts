@@ -9,4 +9,4 @@ blogRouter.post("/blog/new", verifyUser, BlogController.createBlog)
 blogRouter.patch("/blog/update", verifyUser, BlogController.updateBlog)
 blogRouter.delete("/blog/delete", verifyUser, BlogController.deleteBlog)
 
-export default blogRouter
+export default blogRouter;

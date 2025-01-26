@@ -50,7 +50,6 @@ export class UseerController {
 
 	static async getProfile(req: Request, res: Response, next: NextFunction): Promise<void> {
 		try {
-
 			const user = req.user
 			res.status(200).send({
 				message: "User profile",

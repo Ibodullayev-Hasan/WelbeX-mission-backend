@@ -129,7 +129,6 @@ export class BlogController {
 		}
 	}
 
-
 	// delete blog
 	static async deleteBlog(req: Request, res: Response, next: NextFunction): Promise<void> {
 		try {

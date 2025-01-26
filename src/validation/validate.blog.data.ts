@@ -22,4 +22,4 @@ export function validateBlogData(blogData: IBlog): string | null {
     }
 
     return null;
-}
+};

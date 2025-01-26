@@ -8,4 +8,4 @@ export class ErrorHandlerMiddleware {
             message: err.message || "internal server error!"
         })
     }
-}
+};

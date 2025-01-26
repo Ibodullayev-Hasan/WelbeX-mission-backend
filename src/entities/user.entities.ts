@@ -18,5 +18,4 @@ export class User implements IUser {
 
 	@OneToMany(() => Blog, (blog) => blog.author)
 	blogs?: Blog[];
-
 }

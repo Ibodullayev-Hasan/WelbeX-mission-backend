@@ -9,4 +9,4 @@ userRouter.post('/user/new', UseerController.createUser)
 userRouter.post('/user/login', Login.userLogin)
 userRouter.get('/user/profile', verifyUser, UseerController.getProfile)
 
-export default userRouter
+export default userRouter;

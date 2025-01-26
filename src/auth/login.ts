@@ -6,8 +6,6 @@ import { ErrorHandler } from "../errors";
 import { appDataSource } from "../config/typeorm.config";
 import { User } from "../entities";
 
-
-
 // login
 export class Login {
 

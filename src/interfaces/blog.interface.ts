@@ -10,4 +10,4 @@ export interface IBlog {
 	date?: Date;
 	content: IContent;
 	author?: User;
-}
+};
