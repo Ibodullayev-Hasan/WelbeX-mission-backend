@@ -18,10 +18,10 @@ export class Login {
 				throw new ErrorHandler('login and password required', 400)
 			}
 
-			const user: User | null = await appDataSource.getRepository(User).findOne({ where: { login: login } })
+			const user: User | null = await appDataSource.getRepository(User).findOne({ where: { login: login, password: password } })
 
 			if (!user) {
-				throw new ErrorHandler("User not found", 401);
+				throw new ErrorHandler("Invalid credentials", 401);
 			}
 
 			const payload: object = { sub: user?.id, username: user?.username }
@@ -35,7 +35,7 @@ export class Login {
 				ref_token: ref_token
 			})
 		} catch (error: any) {
-			next(new ErrorHandler(error.message, error.status || 500));
+			next(new ErrorHandler(error.message, error.status || 400));
 		}
 	}
 }

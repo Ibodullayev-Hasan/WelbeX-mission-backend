@@ -37,10 +37,11 @@ export class UseerController {
 			const payload: object = { sub: savedUser.id, login: savedUser.login }
 			const acc_token: string = jwt.sign(payload, process.env.TOKEN_SECRET_KEY as string, { expiresIn: '30m' })
 
+			const { password, ...result } = savedUser
 			res.status(201).send({
 				message: 'User created successfully!',
-				data: savedUser,
-				token: acc_token
+				data: result,
+				acc_token: acc_token
 			});
 		} catch (error: any) {
 			next(new ErrorHandler(error.message, error.status || 500));
@@ -57,7 +58,7 @@ export class UseerController {
 					id: user?.id,
 					username: user?.username,
 					login: user?.login,
-					blogs:user?.blogs
+					blogs: user?.blogs
 				}
 			})
 		} catch (error: any) {

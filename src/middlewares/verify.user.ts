@@ -10,9 +10,9 @@ import { User } from "src/entities";
 // user verification
 export const verifyUser = async (req: Request, res: Response, next: NextFunction) => {
 
-	const token = req.headers.authorization?.split(" ")[1]
-
 	try {
+		const token = req.headers.authorization?.split(" ")[1]
+
 		if (!token) {
 			return res.status(401).send({ message: 'No token provided' });
 		}
@@ -29,6 +29,7 @@ export const verifyUser = async (req: Request, res: Response, next: NextFunction
 			where: { id: sub as string },
 			relations: { blogs: true }
 		})
+
 		if (!user) {
 			return res.status(404).send({
 				message: "User not found"
@@ -42,8 +43,6 @@ export const verifyUser = async (req: Request, res: Response, next: NextFunction
 		if (error.name === "TokenExpiredError") {
 			return res.status(401).send({ message: "Token has expired. Please log in again." });
 		}
-
-		if (error instanceof Error) throw error
-		throw new ErrorHandler(error.message, 500)
+		next(new ErrorHandler(error.message, error.status || 400))
 	}
 } 
