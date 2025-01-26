@@ -10,7 +10,10 @@ export class User implements IUser {
 	@Column({ type: "text", nullable: false })
 	username!: string;
 
-	@Column({ type: "varchar", nullable: false })
+	@Column({ type: "text", nullable: false, unique: true })
+	login!: string;
+
+	@Column({ type: "varchar", length: '18', nullable: false })
 	password!: string;
 
 	@OneToMany(() => Blog, (blog) => blog.author)

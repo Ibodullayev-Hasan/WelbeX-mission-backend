@@ -1,7 +1,7 @@
 import { User } from "src/entities";
 
 export interface IContent {
-	type?: 'text' | 'image' | 'video';
+	type: 'text' | 'image' | 'video';
 	content: string;
 }
 

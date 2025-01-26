@@ -14,6 +14,6 @@ export class Blog implements IBlog {
 	@ManyToOne(() => User, (user) => user.blogs)
 	author?: User | undefined;
 
-	@Column({ type: "json" })
+	@Column({ type: "jsonb" })
 	content!: IContent;
 }

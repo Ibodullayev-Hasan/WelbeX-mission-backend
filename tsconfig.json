@@ -1,10 +1,17 @@
 {
     "compilerOptions": {
-        "target": "es2016",
+        "target": "ES2016",
         "module": "commonjs",
         "rootDir": "./src",
         "outDir": "./dist",
         "baseUrl": "./",
+        "typeRoots": [
+            "src/types",
+            "./node_modules/@types"
+        ],
+        "types": [
+            "node"
+        ],
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
@@ -13,9 +20,14 @@
         "experimentalDecorators": true
     },
     "include": [
-        "src/**/*"
+        "src/**/*",
+        "src/types"
+    ],
+    "files": [
+        "src/types/express.d.ts"
     ],
     "exclude": [
-        "./dist"
+        "./dist",
+        "node_modules/"
     ]
 }

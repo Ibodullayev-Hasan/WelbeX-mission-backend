@@ -2,24 +2,32 @@ import { IUser } from "src/interfaces";
 
 export function validateUserData(userData: Partial<IUser>): string | null {
 	if (!userData || Object.keys(userData).length < 1) {
-		return 'username and password fields cannot be empty';
+		return 'username, password, and login fields cannot be empty';
 	}
-	const { username, password } = userData;
-	if (!username || !password) {
-		return 'username and password are required';
+
+	const { username, password, login } = userData;
+
+	if (!username || !password || !login) {
+		return 'username, password, and login are required';
 	}
-	
+
+	const loginRegex = /^[a-zA-Z0-9_]+$/;
+	if (!loginRegex.test(login)) {
+		return 'login can only contain letters, numbers, and underscores';
+	}
+
 	if (password.length < 4 || password.length > 8) {
 		return 'password must be between 4 and 8 characters';
 	}
-	const usernameRegex = /^[a-zA-Z0-9_]+$/;
-	if (!usernameRegex.test(username)) {
-		return 'username can only contain letters, numbers, and underscores';
-	}
-	const hasLetter = /[a-zA-Z]/.test(password);
-	const hasNumber = /[0-9]/.test(password);
-	if (!hasLetter || !hasNumber) {
+
+	if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
 		return 'password must contain at least one letter and one number';
 	}
+
+	const usernameRegex = /^[a-zA-Z0-9.]+(\s[a-zA-Z0-9.]+)?$/;
+	if (!usernameRegex.test(username)) {
+		return 'username can contain letters, numbers, ".", and optionally a space';
+	}
+
 	return null;
 }
