@@ -3,7 +3,7 @@ import swaggerUi from "swagger-ui-express";
 import cors from "cors"
 import path from "path";
 import fs from "fs"
-import YAML from "yaml"
+import * as YAML from "yaml";
 import "reflect-metadata"
 import "dotenv/config"
 import { ErrorHandlerMiddleware } from "./middlewares";
