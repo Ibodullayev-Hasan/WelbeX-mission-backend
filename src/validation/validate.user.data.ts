@@ -24,10 +24,5 @@ export function validateUserData(userData: Partial<IUser>): string | null {
 		return 'password must contain at least one letter and one number';
 	}
 
-	const usernameRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9.]{3,}$/;
-
-	if (!usernameRegex.test(username)) {
-		return 'Username must be at least 3 characters long and can contain letters, numbers, and dots';
-	}
 	return null;
 };
